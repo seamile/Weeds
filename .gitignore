@@ -1,5 +1,7 @@
 *.pyc
 *.pyo
 *.swp
+*.log
+.python-version
 __pycache__
 .DS_Store

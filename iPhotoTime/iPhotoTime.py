@@ -50,7 +50,6 @@ def main(photo_dir):
         new_full_name = os.path.join(photo_dir, new_name)
 
         # rename
-        ''
         info = 'Change \033[1;32m%s\033[0m to \033[1;33m%s\033[0m' % (fname, new_name)
         if use_mtime == True:
             info += ' (\033[31muse mtime\033[0m)'
