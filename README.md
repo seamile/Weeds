@@ -12,3 +12,5 @@ Index
 - **[PageTest](<PageTest>):** `MultiProcess + Coroutine` 模型的递归页面测试程序，测试某域名下全部页面的可达性
 - **[Spider7K7K](<Spider7K7K>):** 一个小爬虫
 - **[iPhotoTime](<iPhotoTime>):** 根据iOS照片文件时间信息批量修改文件名
+- **[rc.d](<rc.d>):** 一些配置文件
+- **[Scripts](<Scripts>):** 杂七杂八
