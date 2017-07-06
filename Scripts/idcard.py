@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+# coding: utf8
+
+import sys
 
 
 def get_check_code(id_code):
@@ -31,3 +34,10 @@ def check_id(id_code):
 
     check_code = get_check_code(id_code)
     return check_code == id_code[-1]
+
+
+def generate_id():
+    _input = input if sys.version_info.major > 2 else raw_input
+    _input('请输入出生年、月、日 ( 格式: 1980-01-02): ')
+    _input('请选择省份: ')
+    _input('请输入出生年: ')
