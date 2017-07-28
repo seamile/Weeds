@@ -2,10 +2,11 @@
 # coding: utf8
 import re
 
-stime = re.compile('\d\:\d\d\:\d\d.\d\d')
+stime = re.compile('\d{1,2}\:\d\d\:\d\d[,.]\d\d')
 
 
 def stime_add(strtime, secodes):
+    strtime = strtime.replace(',', '.')
     h, m, s = [float(i) for i in strtime.split(':')]
     total = h * 3600 + m * 60 + s + secodes
     s = total % 60
@@ -17,7 +18,7 @@ def stime_add(strtime, secodes):
     if h < 0 or m < 0 or s < 0:
         return '0:00:00.00'
     else:
-        s = '%d:%02d:%05.2f' % (h, m, s)
+        s = '%02d:%02d:%05.2f' % (h, m, s)
         return s
 
 
