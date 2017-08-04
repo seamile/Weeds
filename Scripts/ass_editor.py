@@ -28,11 +28,23 @@ def change_line(line, secodes):
     return line
 
 
+def guess_encoding(text):
+    encodings = ['utf8', 'gb18030','gbk', 'gb2312']
+    for e in encodings:
+        try:
+            text.decode(e)
+            return e
+        except UnicodeDecodeError:
+            continue
+    raise UnicodeDecodeError("invalid encoding type")
+
+
 def change_ass(f, secodes):
     with open(f, 'rb') as fp:
         lines = fp.readlines()
+    encoding = guess_encoding(lines[0])
     for i, l in enumerate(lines):
-        lines[i] = change_line(l.decode('utf8'), secodes)
+        lines[i] = change_line(l.decode(encoding), secodes)
     text = ''.join(lines)
     with open(f, 'w') as fp:
         fp.write(text)
