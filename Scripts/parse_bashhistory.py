@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding: utf-8
 
 import re
 import sys
@@ -16,5 +17,5 @@ try:
                 sys.stdout.write('\033[35m%4d [%s] \033[0m' % (i, tm))
             else:
                 sys.stdout.write(line)
-except Exception, e:
+except Exception as e:
     print(e)
