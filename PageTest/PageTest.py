@@ -19,6 +19,7 @@ import time
 import asyncio
 import logging
 import multiprocessing
+from urllib.parse import urlparse
 from html.parser import HTMLParser
 
 IDLE = 0
@@ -62,15 +63,10 @@ class Parser(HTMLParser):
 
     def parse_url(self, url):
         '''解析 url'''
-        # 解析协议
-        protocol_match = re.search(r'^.+(?=://)', url)
-        protocol = protocol_match.group() if protocol_match else ''
-        # 解析 domain
-        domain_match = re.search(r'[\w-]+(\.[\w-]+)+(?=($|/))', url)
-        domain = domain_match.group() if domain_match else ''
-        # 解析 path
-        path_match = re.search(r'(^|\b)/[^#]+', url)
-        path = path_match.group() if path_match else ''
+        p = urlparse(url)
+        protocol = p.scheme or 'http'
+        domain = p.netloc or 'm.sohu.com'
+        path = '%s?%s' % (p.path, p.query) if p.query else p.path
         return protocol, domain, path
 
     def handle_url(self, url):
